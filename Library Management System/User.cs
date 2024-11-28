@@ -29,18 +29,27 @@ namespace Library_Management_System
             else
             {
                 Console.WriteLine($"{book.Title} is currently unavailable.");
+                book.AddToWaitList(Name);
                 return false;
             }
         }
         
-        public bool ReturnBook()
+        public bool ReturnBook(Book book)
         {
             if (BorrowingHistory.Count > 0)
             {
-                Book book = BorrowingHistory.Pop();
+                book = BorrowingHistory.Pop();
                 book.AvailableCopies++;
                 Console.WriteLine($"{Name} returned: {book.Title}");
+
+                string nextUser = book.NotifyNextInWaitlist();
+                if (nextUser != null)
+                {
+                    Console.WriteLine($"Notification sent to: {nextUser}");
+                }
+
                 return true;
+
             }
             else
             {
