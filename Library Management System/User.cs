@@ -34,11 +34,11 @@ namespace Library_Management_System
             }
         }
         
-        public bool ReturnBook(Book book)
+        public bool ReturnBook()
         {
             if (BorrowingHistory.Count > 0)
             {
-                book = BorrowingHistory.Pop();
+                Book book = BorrowingHistory.Pop();
                 book.AvailableCopies++;
                 Console.WriteLine($"{Name} returned: {book.Title}");
 

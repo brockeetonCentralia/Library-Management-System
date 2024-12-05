@@ -13,7 +13,7 @@ namespace Library_Management_System
         public void AddBook(Book book)
         {
             libraryCatalog.AddLast(book);
-            Console.WriteLine($"\nAdded: {book}");
+            //Console.WriteLine($"\nAdded: {book}");
         }
 
         public void RemoveBook(string isbn)
